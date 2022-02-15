@@ -20,7 +20,8 @@ class App {
 
     if($config['enable']) {
 
-      \R::setup( 'mysql:host=localhost;dbname=base_project', 'root', '' ); //for both mysql or mariaDB
+      \R::setup( "mysql:host={$config['host']};dbname={$config['db']}",
+      $config['username'], $config['password'] );
 
       if (!\R::testConnection()) {
         die ('Error database connect');
